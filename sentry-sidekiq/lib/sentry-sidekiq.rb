@@ -11,7 +11,7 @@ module Sentry
 
     register_integration name: "sidekiq", version: Sentry::Sidekiq::VERSION
 
-    if defined?(::Rails::Railtie)
+    if defined?(::Rails::Railtie) && defined?(::Sentry::Rails)
       class Railtie < ::Rails::Railtie
         config.after_initialize do
           next unless Sentry.initialized?
